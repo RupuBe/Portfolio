@@ -32,13 +32,13 @@ function ArticleCard({ article, index }: { article: (typeof articles)[number]; i
   return (
     <CardShell
       url={article.url}
-      className="group relative flex h-full min-h-[24rem] flex-col overflow-hidden text-white transition-transform duration-500 ease-editorial hover:-translate-y-1.5 focus-visible:-translate-y-1.5"
+      className="group relative flex h-full min-h-[24rem] flex-col overflow-hidden text-white transition-transform duration-500 ease-editorial hover:-translate-y-1 focus-visible:-translate-y-1"
     >
       <div className="absolute inset-0 transition-[filter] duration-500 group-hover:brightness-[0.93]" style={toneBg(article.tone)} />
 
       {/* ── Typographic cover ── */}
       <div className="relative flex-1 p-5 pb-0">
-        <div className="flex items-center justify-between text-[0.56rem] tracking-[0.24em] uppercase text-white/70">
+        <div className="flex items-center justify-between text-[0.8125rem] text-white/80">
           <span>Freelysta Learn</span>
           <span>No. {number}</span>
         </div>
@@ -54,12 +54,12 @@ function ArticleCard({ article, index }: { article: (typeof articles)[number]; i
           {article.title}
         </h3>
         {/* Byline, with the view count as quiet metadata beside it */}
-        <p className="mt-3 flex flex-wrap gap-x-2 gap-y-1 text-[0.6rem] tracking-[0.2em] uppercase text-white/55">
+        <p className="mt-3 flex flex-wrap gap-x-2 gap-y-1 text-[0.8125rem] text-white/80">
           <span>By {profile.name}</span>
           {article.highlight && (
             <>
               <span aria-hidden="true">·</span>
-              <span className="text-white/75">{article.highlight}</span>
+              <span className="font-medium text-white">{article.highlight}</span>
             </>
           )}
         </p>
@@ -67,17 +67,10 @@ function ArticleCard({ article, index }: { article: (typeof articles)[number]; i
 
       {/* ── Details ── */}
       <div className="relative p-5 pt-6">
-        <div
-          aria-hidden="true"
-          className="absolute bottom-0 right-2 font-display leading-[0.8] text-white/10 pointer-events-none select-none text-[clamp(5rem,9vw,8rem)]"
-        >
-          {number}
-        </div>
+        <p className="text-[0.8125rem] font-medium text-white/80">{article.category}</p>
+        <p className="mt-2 text-[0.9375rem] leading-relaxed text-white/90 max-w-[22rem]">{article.summary}</p>
 
-        <p className="text-[0.56rem] tracking-[0.22em] uppercase font-medium text-white/60">{article.category}</p>
-        <p className="mt-2 text-[0.8rem] leading-relaxed text-white/85 max-w-[22rem]">{article.summary}</p>
-
-        <p className="relative mt-5 flex items-center gap-2 text-[0.6rem] tracking-[0.2em] uppercase font-semibold">
+        <p className="relative mt-5 flex items-center gap-2 text-[0.875rem] font-medium">
           {article.url ? (
             <>
               <span className="link-underline">Read article</span>
@@ -86,8 +79,8 @@ function ArticleCard({ article, index }: { article: (typeof articles)[number]; i
             </>
           ) : (
             <>
-              <Clock aria-hidden="true" strokeWidth={1.8} className="h-3.5 w-3.5 text-white/60" />
-              <span className="text-white/60">Link coming soon</span>
+              <Clock aria-hidden="true" strokeWidth={1.8} className="h-3.5 w-3.5 text-white/80" />
+              <span className="text-white/80">Link coming soon</span>
             </>
           )}
         </p>
@@ -125,8 +118,8 @@ export default function Projects() {
   return (
     <section id="work" className="bg-cream pb-10 md:pb-12">
       <div className="px-gutter">
-        <SectionHeading index="03" label="Selected work" title="SELECTED WRITING." accent="WRITING." />
-        <motion.p {...reveal(0.1)} className="-mt-4 md:-mt-8 mb-8 md:mb-10 max-w-xl text-[0.9rem] leading-relaxed text-ink/60">
+        <SectionHeading index="03" label="Selected work" title="SELECTED WRITING." />
+        <motion.p {...reveal(0.1)} className="-mt-4 md:-mt-8 mb-8 md:mb-10 max-w-xl text-[0.9375rem] leading-relaxed text-ink/72">
           Published articles for Freelysta Learn, written for beginner freelancers on portfolios, client communication and pricing.
         </motion.p>
       </div>
@@ -146,13 +139,13 @@ export default function Projects() {
           </motion.div>
         ))}
       </div>
-      <p className="md:hidden px-gutter mt-3 text-[0.6rem] tracking-[0.22em] uppercase text-ink/40" aria-hidden="true">
+      <p className="md:hidden px-gutter mt-3 meta" aria-hidden="true">
         Swipe for more →
       </p>
 
       {/* ── Technical projects ── */}
       <div className="px-gutter mt-14 md:mt-16">
-        <SectionHeading index="03.1" label="Technical projects" title="BUILT WITH CODE." accent="CODE." size="sm" />
+        <SectionHeading index="03.1" label="Technical projects" title="BUILT WITH CODE." size="sm" />
 
         <div className="flex flex-col gap-6">
           {technicalProjects.map((p, i) => (
@@ -162,11 +155,11 @@ export default function Projects() {
               className="group grid grid-cols-1 lg:grid-cols-12 border border-ink/15 transition-colors duration-500 hover:border-ink/40"
             >
               <div className="lg:col-span-5 bg-ink text-cream p-6 md:p-10 flex flex-col justify-between gap-8 min-h-[16rem]">
-                <div className="flex items-center justify-between text-[0.56rem] tracking-[0.24em] uppercase text-cream/55">
+                <div className="flex items-center justify-between text-[0.8125rem] text-cream/72">
                   <span>Project No. {String(i + 1).padStart(2, '0')}</span>
                   <span>{p.stack.slice(0, 2).join(' · ')}</span>
                 </div>
-                <div className="px-2 transition-transform duration-700 ease-editorial group-hover:scale-[1.02]">
+                <div className="px-2">
                   <RouteGraphic />
                 </div>
                 <p className="font-display text-[clamp(3rem,7vw,5.5rem)] leading-[0.85] tracking-tight">
@@ -175,25 +168,25 @@ export default function Projects() {
               </div>
 
               <div className="lg:col-span-7 p-6 md:p-10">
-                <p className="eyebrow">{p.type}</p>
+                <p className="meta">{p.type}</p>
                 <h4 className="mt-3 font-display text-[clamp(2rem,4vw,3.25rem)] leading-[0.92] tracking-tight text-ink">
-                  {p.name} <span className="text-ink/35">— {p.subtitle}</span>
+                  {p.name} <span className="text-ink/60">— {p.subtitle}</span>
                 </h4>
                 <ul className="mt-6 flex flex-col gap-2.5">
                   {p.points.map((pt) => (
-                    <li key={pt} className="flex gap-3 text-[0.88rem] leading-relaxed text-ink/70">
-                      <span aria-hidden="true" className="mt-[0.7em] h-px w-3 flex-shrink-0 bg-warm" />
+                    <li key={pt} className="flex gap-3 text-[0.9375rem] leading-relaxed text-ink/72">
+                      <span aria-hidden="true" className="mt-[0.7em] h-px w-3 flex-shrink-0 bg-ink/30" />
                       {pt}
                     </li>
                   ))}
                 </ul>
                 <ul className="mt-7 flex flex-wrap gap-2" aria-label="Technologies">
                   {p.stack.map((s) => (
-                    <li key={s} className="border border-ink/15 px-2.5 py-1 text-[0.68rem] text-ink/70">{s}</li>
+                    <li key={s} className="border border-ink/15 px-2.5 py-1 text-[0.8125rem] text-ink/72">{s}</li>
                   ))}
                 </ul>
                 {(p.url || p.repo) && (
-                  <div className="mt-7 flex flex-wrap gap-6 text-[0.62rem] tracking-[0.2em] uppercase font-semibold">
+                  <div className="mt-7 flex flex-wrap gap-6 text-[0.875rem] font-medium">
                     {p.url && <a href={p.url} target="_blank" rel="noopener noreferrer" className="link-underline">Live site ↗</a>}
                     {p.repo && <a href={p.repo} target="_blank" rel="noopener noreferrer" className="link-underline">Source code ↗</a>}
                   </div>

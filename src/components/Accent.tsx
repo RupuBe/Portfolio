@@ -5,7 +5,7 @@ export default function Accent({ text, accent }: { text: string; accent?: string
   return (
     <>
       {text.slice(0, at)}
-      <span className="text-warm">{accent}</span>
+      <span className="text-warm-ink">{accent}</span>
       {text.slice(at + accent.length)}
     </>
   );

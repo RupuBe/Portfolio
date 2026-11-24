@@ -57,7 +57,7 @@ export default function Nav() {
       className={`fixed top-0 left-0 right-0 z-50 px-gutter transition-[background-color,border-color] duration-300 border-b ${background}`}
     >
       <div className="flex h-14 md:h-16 items-center justify-between">
-        <a href="#top" className="flex min-h-11 items-center gap-2.5 text-[0.62rem] tracking-[0.25em] uppercase font-semibold text-ink/80 hover:text-ink transition-colors">
+        <a href="#top" className="flex min-h-11 items-center gap-2.5 text-[0.6875rem] tracking-[0.16em] uppercase font-semibold text-ink hover:text-ink transition-colors">
           <span className="flex h-6 w-6 items-center justify-center bg-ink text-cream font-poster text-[0.55rem] tracking-normal">
             {profile.initials}
           </span>
@@ -70,7 +70,7 @@ export default function Nav() {
             <a
               key={item.href}
               href={item.href}
-              className="py-3 text-[0.62rem] tracking-[0.2em] uppercase font-medium text-ink/55 hover:text-ink transition-colors"
+              className="py-3 text-[0.6875rem] tracking-[0.16em] uppercase font-medium text-ink/72 hover:text-ink transition-colors"
             >
               <span className="link-underline">{item.label}</span>
             </a>
@@ -78,7 +78,7 @@ export default function Nav() {
           <a
             href={asset(site.resumeFile)}
             download={site.resumeFile}
-            className="group inline-flex items-center gap-2 border border-ink/70 px-3.5 py-2 text-[0.6rem] tracking-[0.2em] uppercase font-semibold text-ink hover:bg-ink hover:text-cream transition-colors duration-300"
+            className="group inline-flex items-center gap-2 border border-ink/70 px-3.5 py-2 text-[0.6875rem] tracking-[0.16em] uppercase font-semibold text-ink hover:bg-ink hover:text-cream transition-colors duration-300"
           >
             Résumé
             <Download aria-hidden="true" strokeWidth={1.8} className="h-3 w-3 transition-transform duration-300 group-hover:translate-y-0.5" />
@@ -132,14 +132,14 @@ export default function Nav() {
                   className="flex items-center justify-between py-3 font-display text-3xl tracking-tight text-ink border-b border-ink/5"
                 >
                   {item.label}
-                  <span className="font-sans text-[0.6rem] tracking-[0.2em] text-ink/30">0{i + 1}</span>
+                  <span className="font-sans text-[0.6875rem] tracking-[0.16em] text-ink/60">0{i + 1}</span>
                 </motion.a>
               ))}
               <a
                 href={asset(site.resumeFile)}
                 download={site.resumeFile}
                 onClick={() => setOpen(false)}
-                className="mt-5 inline-flex min-h-11 items-center justify-center gap-2 bg-ink text-cream text-[0.62rem] tracking-[0.2em] uppercase font-semibold"
+                className="mt-5 inline-flex min-h-11 items-center justify-center gap-2 bg-ink text-cream text-[0.6875rem] tracking-[0.16em] uppercase font-semibold"
               >
                 Download Résumé
                 <Download aria-hidden="true" strokeWidth={1.8} className="h-3.5 w-3.5" />

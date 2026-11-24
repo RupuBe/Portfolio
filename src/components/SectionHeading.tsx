@@ -24,7 +24,7 @@ export default function SectionHeading({ index, label, title, accent, light = fa
   return (
     <header className={size === 'lg' ? 'mb-8 md:mb-12' : 'mb-8 md:mb-10'}>
       <div className="flex items-center gap-4 mb-5">
-        <span className={`text-[0.62rem] tracking-[0.28em] uppercase font-medium ${light ? 'text-cream/45' : 'text-ink/45'}`}>
+        <span className={`text-[0.6875rem] tracking-[0.16em] uppercase font-medium ${light ? 'text-cream/60' : 'text-ink/60'}`}>
           ({index}) — {label}
         </span>
         <motion.span

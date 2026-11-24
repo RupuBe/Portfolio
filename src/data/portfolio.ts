@@ -23,7 +23,6 @@ export const profile = {
   initials: 'RB',
   roles: ['Frontend Developer', 'QA Tester', 'Technical Content Writer'],
   positioning: 'I build, test and communicate digital experiences.',
-  positioningAccent: 'communicate',
 
   /** Hero headline. The `accent` word of each line is set in gold. */
   tagline: [
@@ -82,7 +81,7 @@ export const experience = [
     role: 'QA Tester Intern',
     company: 'DestinPQ',
     mode: 'Remote',
-    period: 'Aug 2026 – Present',
+    period: 'Aug 2026 – Sep 2026',
     summary: 'Functional and regression testing for a D2C e-commerce platform.',
     points: [
       'Performed functional and regression testing using Cypress.',

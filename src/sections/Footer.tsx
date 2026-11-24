@@ -8,7 +8,7 @@ export default function Footer() {
   return (
     <footer id="contact" className="w-full bg-ink text-cream px-gutter pt-16 md:pt-20 pb-10">
       <div className="flex items-center gap-4 mb-8 md:mb-10">
-        <span className="text-[0.62rem] tracking-[0.28em] uppercase font-medium text-cream/45">(08) — Contact</span>
+        <span className="text-[0.6875rem] tracking-[0.16em] uppercase font-medium text-cream/60">(08) — Contact</span>
         <span className="h-px flex-1 bg-cream/15" aria-hidden="true" />
       </div>
 
@@ -34,7 +34,7 @@ export default function Footer() {
               href={s.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-11 items-center gap-3 text-[0.7rem] tracking-[0.2em] uppercase text-cream/60 hover:text-cream transition-colors"
+              className="inline-flex min-h-11 items-center gap-3 text-[0.8125rem] text-cream/72 hover:text-cream transition-colors"
             >
               <SocialIcon icon={s.icon} className="h-4 w-4" />
               <span className="link-underline">{s.label}</span>
@@ -42,11 +42,11 @@ export default function Footer() {
           ))}
           <a
             href={`tel:${profile.phone.replace(/[^+\d]/g, '')}`}
-            className="inline-flex min-h-11 items-center text-[0.7rem] tracking-[0.2em] uppercase text-cream/60 hover:text-cream transition-colors"
+            className="inline-flex min-h-11 items-center text-[0.8125rem] text-cream/72 hover:text-cream transition-colors"
           >
             <span className="link-underline">{profile.phone}</span>
           </a>
-          <p className="inline-flex min-h-11 items-center gap-2 text-[0.7rem] tracking-[0.2em] uppercase text-cream/40">
+          <p className="inline-flex min-h-11 items-center gap-2 text-[0.8125rem] text-cream/60">
             <MapPin aria-hidden="true" strokeWidth={1.6} className="h-3.5 w-3.5" />
             {profile.location}
           </p>
@@ -57,12 +57,12 @@ export default function Footer() {
         <div className="flex flex-col gap-3">
           <a
             href="#top"
-            className="group inline-flex min-h-11 items-center gap-2 text-[0.6rem] tracking-[0.22em] uppercase text-cream/45 hover:text-cream transition-colors"
+            className="group inline-flex min-h-11 items-center gap-2 text-[0.8125rem] text-cream/60 hover:text-cream transition-colors"
           >
             <ArrowUp aria-hidden="true" strokeWidth={1.6} className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5" />
             Back to top
           </a>
-          <p className="text-[0.58rem] tracking-[0.2em] uppercase text-cream/30">
+          <p className="text-[0.8125rem] text-cream/60">
             © {site.year} {profile.name}
           </p>
         </div>

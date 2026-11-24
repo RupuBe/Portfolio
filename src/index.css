@@ -8,7 +8,8 @@
 :root {
   --cream: 247 243 238;   /* #F7F3EE */
   --ink: 10 10 10;        /* #0A0A0A */
-  --gold: 201 169 126;    /* #C9A97E – muted gold accent */
+  --gold: 201 169 126;    /* #C9A97E – gold for shapes, the dark footer and selection */
+  --gold-ink: 150 117 70; /* #967546 – gold for accent words on cream (3.9:1, large text only) */
   --muted: 136 136 136;
 
   /* Article card tones */
@@ -52,7 +53,7 @@
   }
 
   :focus-visible {
-    outline: 2px solid rgb(var(--gold));
+    outline: 2px solid rgb(var(--ink));
     outline-offset: 3px;
   }
 
@@ -68,9 +69,14 @@
     padding-right: var(--gutter);
   }
 
-  /* Small uppercase label */
+  /* Uppercase folio label — section numbers and nav only */
   .eyebrow {
-    @apply text-[0.62rem] tracking-[0.28em] uppercase font-medium text-ink/45;
+    @apply text-[0.6875rem] tracking-[0.16em] uppercase font-medium text-ink/60;
+  }
+
+  /* Small sentence-case label: dates, meta, captions */
+  .meta {
+    @apply text-[0.8125rem] leading-snug text-ink/60;
   }
 
   /* Underline that draws in from the left on hover */
@@ -87,11 +93,7 @@
     background-size: 100% 1px;
   }
 
-  /* Outline text used for the oversized ghost words */
-  .text-ghost {
-    color: transparent;
-    -webkit-text-stroke: 2px rgb(var(--ink) / 0.12);
-  }
+  /* Outline text used for the oversized ghost word in the footer */
   .text-ghost-gold {
     color: transparent;
     -webkit-text-stroke: 1px rgb(var(--gold) / 0.2);

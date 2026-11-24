@@ -4,7 +4,6 @@ import Cursor from './components/Cursor';
 import Hero from './sections/Hero';
 import Proof from './sections/Proof';
 import Experience from './sections/Experience';
-import ContentDivider from './sections/ContentDivider';
 import Projects from './sections/Projects';
 import Profile from './sections/Profile';
 import Skills from './sections/Skills';
@@ -29,7 +28,6 @@ function App() {
           <Hero />
           <Proof />
           <Experience />
-          <ContentDivider />
           <Projects />
           <Profile />
           <Skills />

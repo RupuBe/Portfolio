@@ -31,6 +31,9 @@ const LETTERS: L[] = [
 const LETTERS_BOTTOM = 'calc(36.2 * var(--u) + 1.5rem)';
 
 const MOBILE_WORD_SIZE = 'clamp(2.4rem,14vw,8rem)';
+const MOBILE_FIGURE_W = 'min(92vw, 30rem, 48svh)';
+/** Where the PORTFOLIO word's centre line sits: just under the name block. */
+const MOBILE_WORD_Y = `calc(var(--id-bottom, 16rem) + 0.62 * ${MOBILE_WORD_SIZE} + 1rem)`;
 
 const contactLinks = [
   ...activeSocials.map((s) => ({ label: s.label, href: s.href, icon: s.icon, external: true })),
@@ -56,7 +59,7 @@ function Portrait({ className = '' }: { className?: string }) {
 
 function Tagline({ className = '' }: { className?: string }) {
   return (
-    <p className={`font-bold text-ink tracking-[-0.01em] ${className}`}>
+    <p className={`font-semibold text-ink tracking-[-0.01em] ${className}`}>
       {profile.tagline.map((line) => (
         <span key={line.text} className="block">
           <Accent text={line.text} accent={line.accent} />
@@ -69,13 +72,13 @@ function Tagline({ className = '' }: { className?: string }) {
 /** Designations — one per line (desktop) or inline with wrap points between roles (mobile). */
 function Roles({ className = '', stacked = false }: { className?: string; stacked?: boolean }) {
   return (
-    <p className={`text-[0.6rem] tracking-[0.24em] uppercase font-medium text-ink/60 ${className}`}>
+    <p className={`text-[0.8125rem] font-medium text-ink/72 ${className}`}>
       {profile.roles.map((r, i) =>
         stacked ? (
           <span key={r} className="block">{r}</span>
         ) : (
           <span key={r}>
-            {i > 0 && <> <span className="text-warm" aria-hidden="true">/</span> </>}
+            {i > 0 && <> <span className="text-ink/30" aria-hidden="true">/</span> </>}
             <span className="whitespace-nowrap">{r}</span>
           </span>
         ),
@@ -95,7 +98,7 @@ function ContactIcons({ className = '' }: { className?: string }) {
             aria-label={s.label}
             title={s.label}
             {...(s.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-            className="w-11 h-11 flex items-center justify-center text-ink/70 hover:text-ink transition-[color,transform] duration-300 hover:-translate-y-0.5"
+            className="w-11 h-11 flex items-center justify-center text-ink/72 hover:text-ink transition-[color,transform] duration-300 hover:-translate-y-0.5"
           >
             <SocialIcon icon={s.icon} className="w-[18px] h-[18px]" />
           </a>
@@ -153,7 +156,7 @@ export default function Hero() {
           {LETTERS.map((l, i) => (
             <motion.div
               key={i}
-              {...pop(0.04 + i * 0.03)}
+              {...pop(0.04)}
               className="absolute font-poster text-ink leading-none select-none pointer-events-none"
               style={{
                 left: l.left, top: `calc(${l.top} * var(--u))`, fontSize: l.size,
@@ -189,32 +192,30 @@ export default function Hero() {
         >
           {/* LEFT: tagline, intro, action */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease, delay: 0.45 }}
+            {...pop(0.35, 16)}
             className="pointer-events-auto"
             style={{ width: 'min(24rem, 27vw)' }}
           >
             <Tagline className="leading-[1.08] mb-4 text-[clamp(1rem,1.55vw,1.6rem)]" />
             <div className="flex gap-3 mb-6">
-              <div className="w-px bg-warm flex-shrink-0" />
-              <p className="text-ink/60 leading-relaxed text-[clamp(0.72rem,0.85vw,0.85rem)]">{profile.intro}</p>
+              <div className="w-px bg-ink/20 flex-shrink-0" />
+              <p className="text-ink/72 leading-relaxed text-[clamp(0.8125rem,0.9vw,0.9375rem)]">{profile.intro}</p>
             </div>
-            <ButtonLink href="#work">Explore My Work</ButtonLink>
+            <ButtonLink href="#work">Explore my work</ButtonLink>
           </motion.div>
 
           {/* RIGHT: identity + connect */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease, delay: 0.55 }}
+            {...pop(0.42, 16)}
             className="pointer-events-auto flex flex-col items-end text-right"
             style={{ width: 'min(22rem, 26vw)' }}
           >
             <h1 className="font-display text-ink leading-[0.9] tracking-tight text-[clamp(2rem,3.2vw,3.6rem)]">
               {profile.name}
             </h1>
-            <Roles stacked className="mt-3 leading-[2]" />
-            <span className="my-5 h-px w-12 bg-warm" aria-hidden="true" />
-            <p className="eyebrow mb-1">Let&apos;s connect</p>
+            <Roles stacked className="mt-3 leading-[1.7]" />
+            <span className="my-5 h-px w-12 bg-ink/20" aria-hidden="true" />
+            <p className="meta mb-1">Let&apos;s connect</p>
             <ContactIcons className="-mr-3" />
           </motion.div>
         </div>
@@ -224,22 +225,18 @@ export default function Hero() {
           href="#proof"
           initial={{ opacity: 0 }} animate={{ opacity: 1 }}
           transition={{ delay: 0.9 }}
-          className="absolute z-30 bottom-[4vh] flex flex-col items-center gap-3 text-[0.55rem] tracking-[0.35em] uppercase text-ink/45 hover:text-ink transition-colors"
+          className="absolute z-30 bottom-[4vh] flex flex-col items-center gap-3 text-[0.6875rem] tracking-[0.16em] uppercase text-ink/60 hover:text-ink transition-colors"
           style={{ left: '2.2vw' }}
         >
           <span className="[writing-mode:vertical-rl]">Scroll</span>
-          <motion.span
-            aria-hidden="true"
-            animate={{ scaleY: [0.3, 1, 0.3], originY: 0 }}
-            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-            className="block w-px h-8 bg-ink/40"
-          />
+          <span aria-hidden="true" className="block w-px h-8 bg-ink/30" />
         </motion.a>
       </div>
 
       {/* ══════════ MOBILE / TABLET ══════════ */}
       <div className="lg:hidden">
-        <div ref={stageRef} className="relative w-full overflow-hidden" style={{ height: '100svh', minHeight: '560px', maxHeight: '1100px' }}>
+        <div ref={stageRef} className="relative w-full overflow-hidden" // Sized to its content so there's no empty band: the figure's head (~9% down the image) lands just under the word's centre line
+          style={{ height: `calc(${MOBILE_WORD_Y} + 1rem + 0.91 * 1.25 * ${MOBILE_FIGURE_W})`, minHeight: '560px', maxHeight: '1100px' }}>
           {/* '26 */}
           <motion.span
             initial={{ opacity: 0 }} animate={{ opacity: 1 }}
@@ -256,7 +253,7 @@ export default function Hero() {
             className="absolute inset-x-0 z-30 flex flex-col items-center px-gutter text-center"
             style={{ top: 'calc(3.5rem + 5svh)' }}
           >
-            <Roles className="max-w-[19rem] sm:max-w-none leading-[1.9] text-[0.56rem] sm:text-[0.62rem]" />
+            <Roles className="max-w-[19rem] sm:max-w-none leading-[1.6]" />
             <h1 className="mt-2 font-display text-ink leading-[0.9] tracking-tight text-[clamp(2.4rem,11vw,4.5rem)]">
               {profile.name}
             </h1>
@@ -267,8 +264,8 @@ export default function Hero() {
           <div
             aria-hidden="true"
             className="absolute inset-x-0 flex justify-center pointer-events-none select-none z-10"
-            // Centre line of the word: 52% as designed, pushed down on short screens so its top clears the name block
-            style={{ top: `max(52%, calc(var(--id-bottom, 0px) + 0.62 * ${MOBILE_WORD_SIZE} + 0.5rem))` }}
+            // Centre line of the word sits just under the name block; the figure overlaps its lower half
+            style={{ top: MOBILE_WORD_Y }}
           >
             <motion.div
               initial={{ opacity: 0 }} animate={{ opacity: 1 }}
@@ -290,7 +287,7 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.0, ease, delay: 0.15 }}
-              style={{ width: 'min(80vw, 28rem, 44svh)' }}
+              style={{ width: MOBILE_FIGURE_W }}
             >
               <Portrait />
             </motion.div>
@@ -300,11 +297,11 @@ export default function Hero() {
         {/* ── Intro + actions, below the portrait ── */}
         <div className="px-gutter pt-10 pb-4 border-t border-ink/10">
           <motion.div {...reveal(0, 16)} className="mx-auto max-w-xl">
-            <p className="eyebrow mb-4">Hello — I&apos;m {profile.firstName}</p>
-            <p className="text-ink/70 leading-relaxed text-[0.95rem]">{profile.intro}</p>
-            <ButtonLink href="#work" className="mt-7 w-full min-[420px]:w-auto">Explore My Work</ButtonLink>
+            <p className="meta mb-4">Hello — I&apos;m {profile.firstName}</p>
+            <p className="text-ink/72 leading-relaxed text-[0.9375rem]">{profile.intro}</p>
+            <ButtonLink href="#work" className="mt-7 w-full min-[420px]:w-auto">Explore my work</ButtonLink>
             <div className="mt-6 flex items-center justify-between">
-              <p className="eyebrow">Let&apos;s connect</p>
+              <p className="meta">Let&apos;s connect</p>
               <ContactIcons className="-mr-3" />
             </div>
           </motion.div>

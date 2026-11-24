@@ -20,6 +20,7 @@ export default {
         cream: token('cream'),
         ink: token('ink'),
         warm: token('gold'),
+        'warm-ink': token('gold-ink'),
         muted: token('muted'),
         proj: {
           blue: token('proj-blue'),

@@ -20,7 +20,7 @@ export default function ButtonLink({ variant = 'outline', icon = 'arrow', classN
   return (
     <a
       {...rest}
-      className={`group inline-flex min-h-11 items-center justify-center gap-3 border px-5 sm:px-6 py-3 text-[0.62rem] font-semibold uppercase tracking-[0.18em] transition-colors duration-300 ${variants[variant]} ${className}`}
+      className={`group inline-flex min-h-11 items-center justify-center gap-3 border px-5 sm:px-6 py-3 text-[0.875rem] font-medium transition-colors duration-300 ${variants[variant]} ${className}`}
     >
       {children}
       <Icon

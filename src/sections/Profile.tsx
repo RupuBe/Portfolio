@@ -3,7 +3,6 @@ import { asset, degree, profile } from '../data/portfolio';
 import { reveal } from '../lib/motion';
 import SectionHeading from '../components/SectionHeading';
 import ButtonLink from '../components/Button';
-import Accent from '../components/Accent';
 
 const facts = [
   { label: 'Degree', value: degree.title.replace('B.Tech, ', 'B.Tech ') },
@@ -34,12 +33,12 @@ function IdCard() {
             width={570}
             height={760}
             loading="lazy"
-            className="w-full h-full object-cover object-top grayscale-[15%] transition-[filter,transform] duration-700 hover:grayscale-0 hover:scale-[1.03]"
+            className="w-full h-full object-cover object-top grayscale-[15%] transition-[filter] duration-700 hover:grayscale-0"
           />
         </div>
         <figcaption className="mt-2.5 text-center">
           <span className="block font-display text-lg leading-none tracking-tight text-ink">{profile.name}</span>
-          <span className="block mt-1 text-[0.5rem] tracking-[0.2em] uppercase text-ink/45">
+          <span className="block mt-1 text-[0.6875rem] text-ink/60">
             B.Tech CSE · {degree.specialization}
           </span>
         </figcaption>
@@ -63,7 +62,7 @@ export default function Profile() {
             {...reveal(0.05)}
             className="font-display text-[clamp(2rem,4.6vw,4.25rem)] leading-[0.95] tracking-tight text-ink"
           >
-            <Accent text={profile.positioning} accent={profile.positioningAccent} />
+            {profile.positioning}
           </motion.p>
 
           <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-4">
@@ -71,7 +70,7 @@ export default function Profile() {
               <motion.p
                 key={i}
                 {...reveal(0.1 + i * 0.05)}
-                className={`text-[0.95rem] leading-relaxed text-ink/65 ${i === 2 ? 'md:col-span-2 text-ink/80 font-medium' : ''}`}
+                className={`text-[0.9375rem] leading-relaxed ${i === 2 ? 'md:col-span-2 text-ink font-medium' : 'text-ink/72'}`}
               >
                 {para}
               </motion.p>
@@ -84,8 +83,8 @@ export default function Profile() {
           >
             {facts.map((f) => (
               <div key={f.label} className="py-4 pr-4 border-b border-ink/10">
-                <dt className="text-[0.58rem] tracking-[0.24em] uppercase text-ink/40">{f.label}</dt>
-                <dd className="mt-1.5 text-[0.85rem] font-medium leading-snug text-ink">{f.value}</dd>
+                <dt className="meta">{f.label}</dt>
+                <dd className="mt-1 text-[0.9375rem] font-medium leading-snug text-ink">{f.value}</dd>
               </div>
             ))}
           </motion.dl>

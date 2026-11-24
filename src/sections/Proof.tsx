@@ -30,10 +30,10 @@ function Stat({ item }: { item: (typeof achievements)[number] }) {
         className="font-display leading-[0.85] tracking-tight text-ink text-[clamp(2.75rem,4.4vw,4.25rem)]"
       >
         <CountUp to={Number(item.value)} />
-        {item.suffix && <span className="text-warm">{item.suffix}</span>}
+        {item.suffix && <span className="text-ink/60">{item.suffix}</span>}
       </p>
-      <p className="eyebrow text-ink/55 mt-3 tracking-[0.16em] xl:tracking-[0.28em]">{item.label}</p>
-      <p className="text-ink/55 mt-1 text-[0.78rem] leading-snug">{item.detail}</p>
+      <p className="mt-3 text-[0.8125rem] font-medium text-ink">{item.label}</p>
+      <p className="meta mt-0.5">{item.detail}</p>
     </div>
   );
 }
@@ -44,7 +44,7 @@ export default function Proof() {
     <section id="proof" aria-label="A little proof of work" className="relative bg-cream px-gutter pt-12 md:pt-16 pb-10 md:pb-14">
       <motion.header {...reveal(0)} className="flex items-baseline gap-4 mb-5 md:mb-6">
         <h2 className="font-display leading-none tracking-tight text-ink text-[clamp(1.75rem,2.8vw,2.6rem)] whitespace-nowrap">
-          NUMBERS THAT <span className="text-warm">SPEAK.</span>
+          NUMBERS THAT SPEAK.
         </h2>
         <span className="h-px flex-1 bg-ink/15 self-center" aria-hidden="true" />
         <span className="hidden sm:inline eyebrow whitespace-nowrap">(01) — A little proof of work</span>
