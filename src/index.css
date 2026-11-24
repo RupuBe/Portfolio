@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Theme ─────────────────────────────────────────────────────────────
+   Every colour on the site comes from these channels. Change them here
+   and Tailwind classes (bg-cream, text-ink/60, text-warm …) follow. */
+:root {
+  --cream: 247 243 238;   /* #F7F3EE */
+  --ink: 10 10 10;        /* #0A0A0A */
+  --gold: 201 169 126;    /* #C9A97E – muted gold accent */
+  --muted: 136 136 136;
+
+  /* Article card tones */
+  --proj-blue: 74 111 165;
+  --proj-tan: 150 122 84;
+  --proj-green: 106 122 94;
+  --proj-red: 184 92 74;
+  --proj-sky: 84 133 165;
+
+  --gutter: clamp(1.25rem, 5vw, 5rem);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 4.5rem;
+  }
+
+  body {
+    @apply font-sans bg-cream text-ink;
+    overflow-x: clip;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  #root {
+    width: 100%;
+    max-width: 100%;
+    text-align: left;
+    min-height: 100svh;
+    display: block;
+  }
+
+  ::selection {
+    background: rgb(var(--gold) / 0.35);
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--gold));
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+}
+
+@layer components {
+  /* Horizontal page padding used by every section */
+  .px-gutter {
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
+  }
+
+  /* Small uppercase label */
+  .eyebrow {
+    @apply text-[0.62rem] tracking-[0.28em] uppercase font-medium text-ink/45;
+  }
+
+  /* Underline that draws in from the left on hover */
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s;
+    padding-bottom: 2px;
+  }
+  .link-underline:hover,
+  .link-underline:focus-visible {
+    background-size: 100% 1px;
+  }
+
+  /* Outline text used for the oversized ghost words */
+  .text-ghost {
+    color: transparent;
+    -webkit-text-stroke: 2px rgb(var(--ink) / 0.12);
+  }
+  .text-ghost-gold {
+    color: transparent;
+    -webkit-text-stroke: 1px rgb(var(--gold) / 0.2);
+  }
+}
+
+@layer utilities {
+  .no-scrollbar { scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+}
